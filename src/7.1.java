@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in); // Один объект Scanner
+        Scanner sc = new Scanner(System.in); 
 
         System.out.println("Введите слово и число n через пробел:");
         String str = sc.next();
@@ -12,8 +12,8 @@ public class Main {
         sc.close();
     }
     public static String repeatEnd(String str, int n) {
-        String end = str.substring(str.length() - n); // Берем последние n символов
-        return end.repeat(n); // Повторяем n раз (Java 11+)
+        String end = str.substring(str.length() - n); 
+        return end.repeat(n); // Повторяем n раз 
     }
 
 }
