@@ -1,21 +1,39 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class Main {
-
-    public static void main(String[] args) {
-        System.out.println("Введите количество элементов в массиве:");
-        Scanner sc = new Scanner(System.in);
-        int k = sc.nextInt();
-        int[] array = new int [k];
-        System.out.println("Введите элементы массива:");
-        for (int i = 0;i <k;i++){
-            System.out.print("Элемент" + (i+1) + ":");
-            array[i] = sc.nextInt();
+public class CenteredAverage {
+    public static int centeredAverage(int[] nums) {
+        Arrays.sort(nums); // Сортуємо масив
+        int sum = 0;
+        
+       
+        for (int i = 1; i < nums.length - 1; i++) {
+            sum += nums[i];
         }
-        int middle = (array.length+1)/2;
-        System.out.print(middle);
-        sc.close();
 
+        
+        return sum / (nums.length - 2);
     }
 
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Введіть розмір масиву (мінімум 3): ");
+        int size = scanner.nextInt();
+        while (size < 3) {
+            System.out.print("Розмір має бути 3 або більше. Введіть знову: ");
+            size = scanner.nextInt();
+        }
+
+        int[] nums = new int[size];
+        System.out.println("Введіть елементи масиву:");
+        for (int i = 0; i < size; i++) {
+            nums[i] = scanner.nextInt();
+        }
+
+        int result = centeredAverage(nums);
+        System.out.println("Центроване середнє: " + result);
+
+        scanner.close();
+    }
 }
