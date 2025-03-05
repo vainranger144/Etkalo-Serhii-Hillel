@@ -1,27 +1,33 @@
-
-import java.util.Scanner;
-
-public class Person {
+public class Person implements Displayable {
     private String name;
     private int age;
-    private String profession;
+    private PersonRole role; // Використовуємо enum для ролі
+    private String gender;
 
-    public Person(String name, int age, String profession) {
+    public static final String MALE = "чоловік";
+    public static final String FEMALE = "жінка";
+
+    public Person(String name, int age, PersonRole role, String gender) {
         this.name = name;
         this.age = age;
-        this.profession = profession;
+        this.role = role;
+        this.gender = gender;
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public int getAge() {
-        return this.age;
+        return age;
     }
 
-    public String getProfession() {
-        return this.profession;
+    public PersonRole getRole() {
+        return role;
+    }
+
+    public String getGender() {
+        return gender;
     }
 
     public void setName(String name) {
@@ -31,31 +37,25 @@ public class Person {
     public void setAge(int age) {
         if (age > 0) {
             this.age = age;
-        } else {
-            System.out.println("Вік має бути позитивним!");
         }
-
     }
 
-    public void setProfession(String profession) {
-        this.profession = profession;
+    public void setRole(PersonRole role) {
+        this.role = role;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public void display() {
-        System.out.println("Ім'я: " + this.name + ", Вік: " + this.age + ",Профессія:" + this.profession);
+        System.out.println("Ім'я: " + name + ", Вік: " + age +
+                ", Роль: " + role +
+                ", Стать: " + gender);
     }
 
-    public void newProfession() {
-        System.out.println("Введіть нову професію:");
-        Scanner sc = new Scanner(System.in);
-        String newProfession = sc.nextLine();
-        sc.close();
-        if (newProfession.equalsIgnoreCase("немає")) {
-            System.out.println("Ім'я: " + this.name + ", Вік: " + this.age + ", Професія: " + this.profession);
-        } else {
-            this.profession = newProfession;
-            System.out.println("Ім'я: " + this.name + ", Вік: " + this.age + ", Нова професія: " + this.profession);
-        }
+    @Override
+    public void displayInformation() {
 
     }
 }
