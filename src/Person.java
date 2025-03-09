@@ -1,11 +1,8 @@
-public class Person implements Displayable {
-    private String name;
-    private int age;
-    private PersonRole role; // Використовуємо enum для ролі
-    private String gender;
-
-    public static final String MALE = "чоловік";
-    public static final String FEMALE = "жінка";
+public abstract class Person implements Displayable {
+    protected String name;
+    protected int age;
+    protected PersonRole role;
+    protected String gender;
 
     public Person(String name, int age, PersonRole role, String gender) {
         this.name = name;
@@ -48,14 +45,11 @@ public class Person implements Displayable {
         this.gender = gender;
     }
 
-    public void display() {
-        System.out.println("Ім'я: " + name + ", Вік: " + age +
-                ", Роль: " + role +
-                ", Стать: " + gender);
-    }
+    // Абстрактный метод для отображения информации
+    public abstract void display();
 
-    @Override
+    // Перегруженный метод интерфейса Displayable
     public void displayInformation() {
-
+        System.out.println("Ім'я: " + name + ", Вік: " + age + ", Роль: " + role + ", Стать: " + gender);
     }
 }
