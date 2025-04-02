@@ -1,5 +1,5 @@
 public class Man extends Person {
-    public Man(String name, int age, PersonRole role) {
+    public Man(String name, int age, PersonRole role) throws InvalidUserDataException {
         super(name, age, role, "чоловік");
     }
 

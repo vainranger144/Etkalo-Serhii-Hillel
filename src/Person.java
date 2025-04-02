@@ -4,7 +4,13 @@ public abstract class Person implements Displayable {
     protected PersonRole role;
     protected String gender;
 
-    public Person(String name, int age, PersonRole role, String gender) {
+    public Person(String name, int age, PersonRole role, String gender) throws InvalidUserDataException {
+        if (name == null || name.trim().isEmpty()) {
+            throw new InvalidUserDataException("Ім'я не може бути порожнім.");
+        }
+        if (age <= 0) {
+            throw new InvalidUserDataException("Вік повинен бути більше нуля.");
+        }
         this.name = name;
         this.age = age;
         this.role = role;
@@ -27,14 +33,18 @@ public abstract class Person implements Displayable {
         return gender;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws InvalidUserDataException {
+        if (name == null || name.trim().isEmpty()) {
+            throw new InvalidUserDataException("Ім'я не може бути порожнім.");
+        }
         this.name = name;
     }
 
-    public void setAge(int age) {
-        if (age > 0) {
-            this.age = age;
+    public void setAge(int age) throws InvalidUserDataException {
+        if (age <= 0) {
+            throw new InvalidUserDataException("Вік повинен бути більше нуля.");
         }
+        this.age = age;
     }
 
     public void setRole(PersonRole role) {
@@ -45,10 +55,10 @@ public abstract class Person implements Displayable {
         this.gender = gender;
     }
 
-    // Абстрактный метод для отображения информации
+    // Абстрактний метод для відображення інформації
     public abstract void display();
 
-    // Перегруженный метод интерфейса Displayable
+    // Перевантажений метод інтерфейсу Displayable
     public void displayInformation() {
         System.out.println("Ім'я: " + name + ", Вік: " + age + ", Роль: " + role + ", Стать: " + gender);
     }
