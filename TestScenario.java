@@ -7,7 +7,7 @@ import java.util.List;
 public class TestScenario {
     public static void main(String[] args) {
 
-        // Предполагается, что путь к драйверу ChromeDriver установлен в переменной среды
+       
         WebDriver driver = new ChromeDriver();
 
         try {
